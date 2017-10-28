@@ -1,8 +1,5 @@
-$(function(){
-		console.log(complimentArray);
-
-	var complimentArray = [
-
+document.addEventListener('DOMContentLoaded', () => {
+	const complimentArray = [
 		'I like your style.',
 		'You are like a spring flower; beautiful and vivacious.',
 		'You complete me.',
@@ -19,23 +16,15 @@ $(function(){
 		'You have not failed until you quit trying',
 		'Obsessed is a word the lazy use to describe the dedicated.',
 		'Do not let your struggle become your identity.',
-	];
+	]
+	let clickCount = 0;
+	document.querySelector('#button').addEventListener('click', () => {
+		clickCount++;
+		let randomNum = Math.floor(Math.random() * complimentArray.length);
+		document.querySelector('#quote').innerHTML = complimentArray[randomNum];
 
-
-	$('#button').on('click', function(){
-			var rand = complimentArray[Math.floor(Math.random() * complimentArray.length)];
-
-			document.getElementById("quote").innerHTML = rand;
-	});
-
-	var count = 0;
-	var video = document.getElementById("audio");
- 	$("button").click(function(){
- 		count=count+1;
- 		if (count == 5) {
- 			video.play();
- 		} else{
- 			
- 		}
- 	});
-});
+		if (clickCount >= 3) {
+			document.querySelector('audio').play();
+		}
+	})
+})
